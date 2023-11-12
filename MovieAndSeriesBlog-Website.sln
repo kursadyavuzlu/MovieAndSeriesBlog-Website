@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.34031.82
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAndSeriesBlog-Website", "MovieAndSeriesBlog-Website\MovieAndSeriesBlog-Website.csproj", "{36D2A98A-91C7-4A7A-87B5-241E6D21FDFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36D2A98A-91C7-4A7A-87B5-241E6D21FDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D2A98A-91C7-4A7A-87B5-241E6D21FDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D2A98A-91C7-4A7A-87B5-241E6D21FDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D2A98A-91C7-4A7A-87B5-241E6D21FDFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA67F0E7-9B6B-4456-BD4D-4383FF46D892}
+	EndGlobalSection
+EndGlobal

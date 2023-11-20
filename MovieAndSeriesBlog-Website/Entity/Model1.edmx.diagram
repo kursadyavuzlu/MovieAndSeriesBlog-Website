@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f79d566924d248db9227faaf6ff58613" Name="Diagram1">
+        <EntityTypeShape EntityType="Dbo_BlogSeriesModel.Tbl_AboutUs" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbo_BlogSeriesModel.Tbl_Blog" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbo_BlogSeriesModel.Tbl_Category" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbo_BlogSeriesModel.Tbl_Comment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbo_BlogSeriesModel.Tbl_Contact" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dbo_BlogSeriesModel.Tbl_Type" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="Dbo_BlogSeriesModel.FK_Tbl_Blog_Tbl_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbo_BlogSeriesModel.FK_Tbl_Blog_Tbl_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="Dbo_BlogSeriesModel.FK_Tbl_Comment_Tbl_Blog" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Dbo_BlogSeriesModel.Tbl_Admin" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

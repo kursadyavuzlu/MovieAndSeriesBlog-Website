@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,19 +75,237 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.aspx" />
+    <Content Include="AdminPages\BlogDelete.aspx" />
+    <Content Include="AdminPages\Blogs.aspx" />
+    <Content Include="AdminPages\BlogUpdate.aspx" />
+    <Content Include="AdminPages\CommentDelete.aspx" />
+    <Content Include="AdminPages\Comments.aspx" />
+    <Content Include="AdminPages\CommentUpdate.aspx" />
+    <Content Include="AdminPages\Messages.aspx" />
+    <Content Include="AdminPages\NewBlog.aspx" />
+    <Content Include="AdminPages\Statistics.aspx" />
+    <Content Include="BlogDetail.aspx" />
+    <Content Include="CategoryDetail.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Entity\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Entity\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Login.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Web2\css\style.css" />
+    <Content Include="Web2\images\b1.jpg" />
+    <Content Include="Web2\index.html" />
+    <Content Include="Web\about.html" />
+    <Content Include="Web\contact.html" />
+    <Content Include="Web\css\bootstrap.css" />
+    <Content Include="Web\css\style.css" />
+    <Content Include="Web\images\avatar.png" />
+    <Content Include="Web\images\food.jpg" />
+    <Content Include="Web\images\icon3.png" />
+    <Content Include="Web\images\logo.jpg" />
+    <Content Include="Web\images\man.jpg" />
+    <Content Include="Web\images\more.png" />
+    <Content Include="Web\images\OKYlogo.png" />
+    <Content Include="Web\images\post1.jpg" />
+    <Content Include="Web\images\post2.jpg" />
+    <Content Include="Web\images\post3.jpg" />
+    <Content Include="Web\images\search.png" />
+    <Content Include="Web\index.html" />
+    <Content Include="Web\js\easing.js" />
+    <Content Include="Web\js\jquery.min.js" />
+    <Content Include="Web\js\move-top.js" />
+    <Content Include="Web\single.html" />
+    <Content Include="Web\w3layouts-License.txt" />
+    <Content Include="Web\Yeni Metin Belgesi.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\BlogDelete.aspx.cs">
+      <DependentUpon>BlogDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\BlogDelete.aspx.designer.cs">
+      <DependentUpon>BlogDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\Blogs.aspx.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\Blogs.aspx.designer.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\BlogUpdate.aspx.cs">
+      <DependentUpon>BlogUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\BlogUpdate.aspx.designer.cs">
+      <DependentUpon>BlogUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\CommentDelete.aspx.cs">
+      <DependentUpon>CommentDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\CommentDelete.aspx.designer.cs">
+      <DependentUpon>CommentDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\Comments.aspx.cs">
+      <DependentUpon>Comments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\Comments.aspx.designer.cs">
+      <DependentUpon>Comments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\CommentUpdate.aspx.cs">
+      <DependentUpon>CommentUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\CommentUpdate.aspx.designer.cs">
+      <DependentUpon>CommentUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\Messages.aspx.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\Messages.aspx.designer.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\NewBlog.aspx.cs">
+      <DependentUpon>NewBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\NewBlog.aspx.designer.cs">
+      <DependentUpon>NewBlog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\Statistics.aspx.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPages\Statistics.aspx.designer.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BlogDetail.aspx.cs">
+      <DependentUpon>BlogDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BlogDetail.aspx.designer.cs">
+      <DependentUpon>BlogDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryDetail.aspx.cs">
+      <DependentUpon>CategoryDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryDetail.aspx.designer.cs">
+      <DependentUpon>CategoryDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tbl_AboutUs.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tbl_Admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tbl_Blog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tbl_Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tbl_Comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tbl_Contact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tbl_Type.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.Master.cs">
+      <DependentUpon>User.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.Master.designer.cs">
+      <DependentUpon>User.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Entity\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Admin.Master" />
     <None Include="packages.config" />
+    <Content Include="User.Master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

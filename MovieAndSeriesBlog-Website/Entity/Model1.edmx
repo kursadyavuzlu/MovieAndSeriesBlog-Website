@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Dbo_BlogSeriesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_AboutUs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Tbl_Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Tbl_Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogTitle" Type="varchar" MaxLength="100" />
+          <Property Name="BlogContent" Type="varchar" MaxLength="4000" />
+          <Property Name="BlogDate" Type="smalldatetime" />
+          <Property Name="BlogImage" Type="varchar" MaxLength="200" />
+          <Property Name="BlogType" Type="tinyint" />
+          <Property Name="BlogCategory" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Tbl_Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tbl_Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="30" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+          <Property Name="CommentContent" Type="varchar" MaxLength="500" />
+          <Property Name="CommentBlog" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Contact">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Topic" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Tbl_Type">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Tbl_Blog_Tbl_Category">
+          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+          <End Role="Tbl_Blog" Type="Self.Tbl_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Tbl_Blog">
+              <PropertyRef Name="BlogCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Blog_Tbl_Type">
+          <End Role="Tbl_Type" Type="Self.Tbl_Type" Multiplicity="0..1" />
+          <End Role="Tbl_Blog" Type="Self.Tbl_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Type">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Blog">
+              <PropertyRef Name="BlogType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Comment_Tbl_Blog">
+          <End Role="Tbl_Blog" Type="Self.Tbl_Blog" Multiplicity="0..1" />
+          <End Role="Tbl_Comment" Type="Self.Tbl_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="Tbl_Comment">
+              <PropertyRef Name="CommentBlog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Dbo_BlogSeriesModelStoreContainer">
+          <EntitySet Name="Tbl_AboutUs" EntityType="Self.Tbl_AboutUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Admin" EntityType="Self.Tbl_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Blog" EntityType="Self.Tbl_Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Comment" EntityType="Self.Tbl_Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Contact" EntityType="Self.Tbl_Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Type" EntityType="Self.Tbl_Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tbl_Blog_Tbl_Category" Association="Self.FK_Tbl_Blog_Tbl_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Blog_Tbl_Type" Association="Self.FK_Tbl_Blog_Tbl_Type">
+            <End Role="Tbl_Type" EntitySet="Tbl_Type" />
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Comment_Tbl_Blog" Association="Self.FK_Tbl_Comment_Tbl_Blog">
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+            <End Role="Tbl_Comment" EntitySet="Tbl_Comment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Dbo_BlogSeriesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_AboutUs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BlogContent" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="BlogDate" Type="DateTime" Precision="0" />
+          <Property Name="BlogImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BlogType" Type="Byte" />
+          <Property Name="BlogCategory" Type="Byte" />
+          <NavigationProperty Name="Tbl_Category" Relationship="Self.FK_Tbl_Blog_Tbl_Category" FromRole="Tbl_Blog" ToRole="Tbl_Category" />
+          <NavigationProperty Name="Tbl_Type" Relationship="Self.FK_Tbl_Blog_Tbl_Type" FromRole="Tbl_Blog" ToRole="Tbl_Type" />
+          <NavigationProperty Name="Tbl_Comment" Relationship="Self.FK_Tbl_Comment_Tbl_Blog" FromRole="Tbl_Blog" ToRole="Tbl_Comment" />
+        </EntityType>
+        <EntityType Name="Tbl_Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tbl_Blog" Relationship="Self.FK_Tbl_Blog_Tbl_Category" FromRole="Tbl_Category" ToRole="Tbl_Blog" />
+        </EntityType>
+        <EntityType Name="Tbl_Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommentContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CommentBlog" Type="Int32" />
+          <NavigationProperty Name="Tbl_Blog" Relationship="Self.FK_Tbl_Comment_Tbl_Blog" FromRole="Tbl_Comment" ToRole="Tbl_Blog" />
+        </EntityType>
+        <EntityType Name="Tbl_Contact">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Topic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Type">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tbl_Blog" Relationship="Self.FK_Tbl_Blog_Tbl_Type" FromRole="Tbl_Type" ToRole="Tbl_Blog" />
+        </EntityType>
+        <Association Name="FK_Tbl_Blog_Tbl_Category">
+          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+          <End Role="Tbl_Blog" Type="Self.Tbl_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Tbl_Blog">
+              <PropertyRef Name="BlogCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Blog_Tbl_Type">
+          <End Role="Tbl_Type" Type="Self.Tbl_Type" Multiplicity="0..1" />
+          <End Role="Tbl_Blog" Type="Self.Tbl_Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Type">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Blog">
+              <PropertyRef Name="BlogType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Comment_Tbl_Blog">
+          <End Role="Tbl_Blog" Type="Self.Tbl_Blog" Multiplicity="0..1" />
+          <End Role="Tbl_Comment" Type="Self.Tbl_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="Tbl_Comment">
+              <PropertyRef Name="CommentBlog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Dbo_BlogSeriesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_AboutUs" EntityType="Self.Tbl_AboutUs" />
+          <EntitySet Name="Tbl_Blog" EntityType="Self.Tbl_Blog" />
+          <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
+          <EntitySet Name="Tbl_Comment" EntityType="Self.Tbl_Comment" />
+          <EntitySet Name="Tbl_Contact" EntityType="Self.Tbl_Contact" />
+          <EntitySet Name="Tbl_Type" EntityType="Self.Tbl_Type" />
+          <AssociationSet Name="FK_Tbl_Blog_Tbl_Category" Association="Self.FK_Tbl_Blog_Tbl_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Blog_Tbl_Type" Association="Self.FK_Tbl_Blog_Tbl_Type">
+            <End Role="Tbl_Type" EntitySet="Tbl_Type" />
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Comment_Tbl_Blog" Association="Self.FK_Tbl_Comment_Tbl_Blog">
+            <End Role="Tbl_Blog" EntitySet="Tbl_Blog" />
+            <End Role="Tbl_Comment" EntitySet="Tbl_Comment" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_Admin" EntityType="Dbo_BlogSeriesModel.Tbl_Admin" />
+        </EntityContainer>
+        <EntityType Name="Tbl_Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Dbo_BlogSeriesModelStoreContainer" CdmEntityContainer="Dbo_BlogSeriesEntities">
+          <EntitySetMapping Name="Tbl_AboutUs">
+            <EntityTypeMapping TypeName="Dbo_BlogSeriesModel.Tbl_AboutUs">
+              <MappingFragment StoreEntitySet="Tbl_AboutUs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Blog">
+            <EntityTypeMapping TypeName="Dbo_BlogSeriesModel.Tbl_Blog">
+              <MappingFragment StoreEntitySet="Tbl_Blog">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+                <ScalarProperty Name="BlogContent" ColumnName="BlogContent" />
+                <ScalarProperty Name="BlogDate" ColumnName="BlogDate" />
+                <ScalarProperty Name="BlogImage" ColumnName="BlogImage" />
+                <ScalarProperty Name="BlogType" ColumnName="BlogType" />
+                <ScalarProperty Name="BlogCategory" ColumnName="BlogCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Category">
+            <EntityTypeMapping TypeName="Dbo_BlogSeriesModel.Tbl_Category">
+              <MappingFragment StoreEntitySet="Tbl_Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Comment">
+            <EntityTypeMapping TypeName="Dbo_BlogSeriesModel.Tbl_Comment">
+              <MappingFragment StoreEntitySet="Tbl_Comment">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
+                <ScalarProperty Name="CommentBlog" ColumnName="CommentBlog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Contact">
+            <EntityTypeMapping TypeName="Dbo_BlogSeriesModel.Tbl_Contact">
+              <MappingFragment StoreEntitySet="Tbl_Contact">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Type">
+            <EntityTypeMapping TypeName="Dbo_BlogSeriesModel.Tbl_Type">
+              <MappingFragment StoreEntitySet="Tbl_Type">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Admin">
+            <EntityTypeMapping TypeName="Dbo_BlogSeriesModel.Tbl_Admin">
+              <MappingFragment StoreEntitySet="Tbl_Admin">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

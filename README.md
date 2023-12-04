@@ -9,7 +9,8 @@ This project was prepared using ASP.NET Web forms. It was designed as a simple s
 - Be able to integrate a Bootstrap theme
 - Making updates on the theme
 - To realise web projects with Asp.Net Entity Framework
-- The technologies I used and learnt:
+
+The technologies I used and learnt:
 
 - ASP.NET Web Forms 
 - C#
